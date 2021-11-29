@@ -1,0 +1,14 @@
+<app-menu></app-menu>
+<div class="container mt-4 p-5 bg-primary text-white rounded">
+    <h1 class="text-center">Autenticación JWT con Spring Boot y Angular: Capítulo 12</h1>
+</div>
+<div class="container mt-4">
+    <div class="alert alert-danger" *ngIf="!sessionActive; else sesionActiva">
+        <strong>Bienvenido!</strong> debe inicar sesión.
+    </div>
+    <ng-template #sesionActiva>
+        <div class="alert alert-primary">
+            <strong>Bienvenido!</strong> {{ username | uppercase }}.
+        </div>
+    </ng-template>
+</div>

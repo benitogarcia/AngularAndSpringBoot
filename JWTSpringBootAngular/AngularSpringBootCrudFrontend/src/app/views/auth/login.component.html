@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+<div class="row">
+    <div class="col-sm-12 col-md-4 mx-auto p-2">
+        <div class="alert alert-info text-center" *ngIf="isLogged; else loggedOut">
+            <strong>Ya has iniciado sesión</strong>
+        </div>
+        <ng-template #loggedOut>
+            <form class="card shadow" autocomplete="off" #f="ngForm" novalidate (ngSubmit)="onLogin()">
+                <div class="card-header">
+                    <h4 class="text-center">Login</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3 mt-3">
+                        <label for="username" class="form-label">Email:</label>
+                        <input type="text" class="form-control" id="username" [(ngModel)]="username"
+                            placeholder="Enter username" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userpass" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="userpass" [(ngModel)]="userpass"
+                            placeholder="Enter userpass" name="userpass">
+                    </div>
+                    <div class="alert alert-warning" *ngIf="isLoginFail">
+                        <strong>Error!</strong> {{errorMsg}}.
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.valid">INGRESAR</button>
+                    </div>
+                    <div class="d-grid mt-3">
+                        <button type="button" class="btn btn-outline-primary btn-block" routerLink="/registrar">REGISTRARSE</button>
+                    </div>
+                </div>
+            </form>
+        </ng-template>
+    </div>
+</div>
